@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact et reservation fictive pour L'Atelier du Quai, restaurant a Briare.">
+  <title>Contact | L'Atelier du Quai</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Retour a l'accueil">
+      L'Atelier du Quai
+      <span>Restaurant a Briare</span>
+    </a>
+    <nav class="nav" aria-label="Navigation principale">
+      <a href="index.html">Accueil</a>
+      <a href="restaurant.html">Restaurant</a>
+      <a href="carte.html">Carte</a>
+      <a href="galerie.html">Galerie</a>
+      <a class="active" href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero page-hero contact-hero">
+      <div class="hero-content">
+        <p class="eyebrow">Contact</p>
+        <h1>Reserver ou poser une question.</h1>
+        <p>Le formulaire de contact donne au site un vrai usage, meme dans cette maquette fictive.</p>
+      </div>
+    </section>
+
+    <section class="section contact">
+      <aside class="contact-card reveal">
+        <p class="eyebrow">Infos pratiques</p>
+        <h2>L'Atelier du Quai</h2>
+        <p>18 quai Mazoyer, 45250 Briare<br>02 38 00 00 00<br>contact@atelierduquai.fr</p>
+        <ul class="hours">
+          <li><strong>Mardi - vendredi</strong><span>12h-14h / 19h-22h</span></li>
+          <li><strong>Samedi</strong><span>12h-14h30 / 19h-22h30</span></li>
+          <li><strong>Dimanche</strong><span>12h-15h</span></li>
+        </ul>
+      </aside>
+
+      <form class="reveal" id="reservation-form">
+        <div class="field-grid">
+          <label>
+            Nom
+            <input type="text" name="name" placeholder="Votre nom" required>
+          </label>
+          <label>
+            Telephone
+            <input type="tel" name="phone" placeholder="06 00 00 00 00" required>
+          </label>
+        </div>
+        <div class="field-grid">
+          <label>
+            Date souhaitee
+            <input type="date" name="date" required>
+          </label>
+          <label>
+            Couverts
+            <select name="guests" required>
+              <option value="">Choisir</option>
+              <option>2 personnes</option>
+              <option>3 personnes</option>
+              <option>4 personnes</option>
+              <option>5 personnes et plus</option>
+            </select>
+          </label>
+        </div>
+        <label>
+          Message
+          <textarea name="message" placeholder="Heure, occasion, allergie ou demande particuliere"></textarea>
+        </label>
+        <button class="button dark" type="submit">Envoyer la demande</button>
+        <p class="form-message" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>L'Atelier du Quai - Site fictif Premium</p>
+    <p>Restaurant factice a Briare - SEO local de base</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

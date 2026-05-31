@@ -3,440 +3,106 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Noir Atelier | Tatoueur à Lyon</title>
-  <style>
-    :root {
-      --ink: #171717;
-      --paper: #f6f0e8;
-      --muted: #6d6258;
-      --line: #d8ccbf;
-      --red: #8b1f2f;
-      --gold: #c59b5c;
-      --white: #fffaf4;
+  <meta name="description" content="L'Atelier du Quai, restaurant fictif a Briare : cuisine de saison, terrasse au bord du canal et reservations en ligne.">
+  <meta name="keywords" content="restaurant Briare, restaurant canal de Briare, cuisine de saison, terrasse, reservation restaurant">
+  <meta name="author" content="L'Atelier du Quai">
+  <meta property="og:title" content="L'Atelier du Quai | Restaurant a Briare">
+  <meta property="og:description" content="Un restaurant fictif chaleureux au bord du canal de Briare.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1600&q=80">
+  <title>L'Atelier du Quai | Restaurant a Briare</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "L'Atelier du Quai",
+      "description": "Restaurant fictif de cuisine de saison a Briare.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "18 quai Mazoyer",
+        "addressLocality": "Briare",
+        "postalCode": "45250",
+        "addressCountry": "FR"
+      },
+      "telephone": "+33238000000",
+      "servesCuisine": "Cuisine francaise de saison",
+      "priceRange": "$$"
     }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      color: var(--ink);
-      background: var(--paper);
-      line-height: 1.6;
-    }
-
-    img {
-      display: block;
-      width: 100%;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .topbar {
-      position: fixed;
-      z-index: 10;
-      top: 0;
-      left: 0;
-      right: 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 24px;
-      padding: 18px clamp(18px, 5vw, 70px);
-      background: rgba(246, 240, 232, 0.92);
-      border-bottom: 1px solid rgba(23, 23, 23, 0.08);
-      backdrop-filter: blur(10px);
-    }
-
-    .brand {
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(22px, 3vw, 34px);
-      font-weight: 700;
-      letter-spacing: 0;
-      white-space: nowrap;
-    }
-
-    .nav {
-      display: flex;
-      gap: 22px;
-      color: var(--muted);
-      font-size: 15px;
-      font-weight: 700;
-    }
-
-    .hero {
-      min-height: 92vh;
-      display: grid;
-      align-items: end;
-      padding: 120px clamp(18px, 5vw, 70px) 56px;
-      color: var(--white);
-      background:
-        linear-gradient(180deg, rgba(23, 23, 23, 0.18), rgba(23, 23, 23, 0.86)),
-        url("https://images.unsplash.com/photo-1598371839696-5c5bb00bdc28?auto=format&fit=crop&w=1800&q=80") center / cover;
-    }
-
-    .hero-content {
-      max-width: 780px;
-    }
-
-    .eyebrow {
-      margin: 0 0 12px;
-      color: var(--gold);
-      font-size: 14px;
-      font-weight: 800;
-      text-transform: uppercase;
-    }
-
-    h1,
-    h2,
-    h3,
-    p {
-      margin-top: 0;
-    }
-
-    h1 {
-      margin-bottom: 18px;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(44px, 9vw, 96px);
-      line-height: 0.95;
-      letter-spacing: 0;
-    }
-
-    .hero p {
-      max-width: 620px;
-      margin-bottom: 28px;
-      font-size: clamp(18px, 2.2vw, 23px);
-      color: rgba(255, 250, 244, 0.9);
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 12px 20px;
-      border: 1px solid var(--white);
-      border-radius: 4px;
-      font-weight: 800;
-      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
-    }
-
-    .button:hover {
-      transform: translateY(-2px);
-    }
-
-    .button.primary {
-      background: var(--white);
-      color: var(--ink);
-    }
-
-    .button.secondary {
-      color: var(--white);
-    }
-
-    main {
-      overflow: hidden;
-    }
-
-    .section {
-      padding: 72px clamp(18px, 5vw, 70px);
-    }
-
-    .section-header {
-      max-width: 760px;
-      margin-bottom: 34px;
-    }
-
-    .section-header h2 {
-      margin-bottom: 12px;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(34px, 5vw, 58px);
-      line-height: 1.05;
-    }
-
-    .section-header p {
-      color: var(--muted);
-      font-size: 18px;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: clamp(28px, 5vw, 64px);
-      align-items: center;
-    }
-
-    .about-text {
-      font-size: 18px;
-    }
-
-    .specialties {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 28px;
-    }
-
-    .specialty {
-      min-height: 92px;
-      padding: 18px;
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      background: var(--white);
-      font-weight: 800;
-    }
-
-    .studio-photo {
-      min-height: 460px;
-      border-radius: 6px;
-      background:
-        linear-gradient(180deg, rgba(23, 23, 23, 0.05), rgba(23, 23, 23, 0.32)),
-        url("https://images.unsplash.com/photo-1542727365-19732a80dcfd?auto=format&fit=crop&w=1200&q=80") center / cover;
-      box-shadow: 20px 20px 0 var(--red);
-    }
-
-    .info-band {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      padding: 0;
-      background: var(--line);
-    }
-
-    .info-panel {
-      padding: 72px clamp(18px, 5vw, 70px);
-      background: var(--ink);
-      color: var(--white);
-    }
-
-    .info-panel:nth-child(2) {
-      background: #25191b;
-    }
-
-    .info-panel h2 {
-      margin-bottom: 24px;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(32px, 4vw, 50px);
-    }
-
-    .hours,
-    .contact-list {
-      display: grid;
-      gap: 14px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .hours li,
-    .contact-list li {
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      padding-bottom: 14px;
-      border-bottom: 1px solid rgba(255, 250, 244, 0.18);
-      color: rgba(255, 250, 244, 0.86);
-    }
-
-    .hours strong,
-    .contact-list strong {
-      color: var(--white);
-    }
-
-    .contact-list li {
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .booking {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: 28px;
-      align-items: center;
-      background: var(--white);
-      border-top: 1px solid var(--line);
-    }
-
-    .booking h2 {
-      margin-bottom: 8px;
-      font-family: Georgia, "Times New Roman", serif;
-      font-size: clamp(30px, 4vw, 48px);
-    }
-
-    .booking p {
-      max-width: 680px;
-      margin-bottom: 0;
-      color: var(--muted);
-      font-size: 18px;
-    }
-
-    .booking .button {
-      border-color: var(--ink);
-      background: var(--ink);
-      color: var(--white);
-      white-space: nowrap;
-    }
-
-    footer {
-      padding: 26px clamp(18px, 5vw, 70px);
-      background: var(--paper);
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    @media (max-width: 780px) {
-      .topbar {
-        position: absolute;
-        align-items: flex-start;
-        padding-top: 16px;
-      }
-
-      .nav {
-        flex-direction: column;
-        gap: 6px;
-        font-size: 14px;
-        text-align: right;
-      }
-
-      .hero {
-        min-height: 88vh;
-        padding-top: 120px;
-      }
-
-      .hero-actions,
-      .booking {
-        display: grid;
-      }
-
-      .about-grid,
-      .info-band,
-      .booking {
-        grid-template-columns: 1fr;
-      }
-
-      .specialties {
-        grid-template-columns: 1fr;
-      }
-
-      .studio-photo {
-        min-height: 320px;
-        box-shadow: 10px 10px 0 var(--red);
-      }
-
-      .section,
-      .info-panel {
-        padding-top: 54px;
-        padding-bottom: 54px;
-      }
-
-      .hours li {
-        display: grid;
-        gap: 2px;
-      }
-
-      .booking .button {
-        width: 100%;
-      }
-    }
-  </style>
+  </script>
 </head>
 <body>
-  <header class="topbar">
-    <a class="brand" href="#">Noir Atelier</a>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Retour a l'accueil">
+      L'Atelier du Quai
+      <span>Restaurant a Briare</span>
+    </a>
     <nav class="nav" aria-label="Navigation principale">
-      <a href="#activite">Activité</a>
-      <a href="#horaires">Horaires</a>
-      <a href="#contact">Contact</a>
+      <a class="active" href="index.html">Accueil</a>
+      <a href="restaurant.html">Restaurant</a>
+      <a href="carte.html">Carte</a>
+      <a href="galerie.html">Galerie</a>
+      <a href="contact.html">Contact</a>
     </nav>
   </header>
 
   <main>
-    <section class="hero" aria-label="Accueil">
+    <section class="hero home-hero">
       <div class="hero-content">
-        <p class="eyebrow">Tatoueur fictif à Lyon</p>
-        <h1>Noir Atelier</h1>
-        <p>Un studio de tatouage calme et précis, spécialisé dans les lignes fines, les compositions florales et les pièces ornementales sur mesure.</p>
-        <div class="hero-actions">
-          <a class="button primary" href="#contact">Prendre contact</a>
-          <a class="button secondary" href="#activite">Découvrir le studio</a>
+        <p class="eyebrow">Cuisine de saison au bord du canal</p>
+        <h1>Une table conviviale au coeur de Briare.</h1>
+        <p>L'Atelier du Quai est un restaurant fictif qui imagine une cuisine fraiche, locale et soignee pour les habitants, les voyageurs et les grandes tables du dimanche.</p>
+        <div class="actions">
+          <a class="button primary" href="contact.html">Reserver une table</a>
+          <a class="button" href="carte.html">Voir la carte</a>
         </div>
       </div>
     </section>
 
-    <section class="section" id="activite">
-      <div class="about-grid">
-        <div class="about-text">
-          <div class="section-header">
-            <h2>Tatouages sur mesure, trait fin et ambiance privée.</h2>
-            <p>Noir Atelier accueille chaque projet avec une écoute attentive, du premier croquis jusqu'aux conseils de cicatrisation.</p>
-          </div>
-          <p>Le studio fictif est imaginé comme un lieu intime où chaque rendez-vous est préparé en amont. Les créations sont dessinées pour correspondre à la morphologie, à l'histoire et au rythme de la personne tatouée.</p>
-          <div class="specialties" aria-label="Spécialités du tatoueur">
-            <div class="specialty">Fine line</div>
-            <div class="specialty">Floral</div>
-            <div class="specialty">Ornemental</div>
-          </div>
-        </div>
-        <div class="studio-photo" role="img" aria-label="Ambiance sombre et élégante d'un studio de tatouage"></div>
-      </div>
-    </section>
-
-    <section class="info-band" id="horaires">
-      <div class="info-panel">
-        <h2>Horaires</h2>
-        <ul class="hours">
-          <li><strong>Lundi</strong><span>Fermé</span></li>
-          <li><strong>Mardi - Vendredi</strong><span>10h00 - 18h30</span></li>
-          <li><strong>Samedi</strong><span>10h00 - 16h00</span></li>
-          <li><strong>Dimanche</strong><span>Fermé</span></li>
-        </ul>
-      </div>
-
-      <div class="info-panel" id="contact">
-        <h2>Coordonnées</h2>
-        <ul class="contact-list">
-          <li>
-            <strong>Adresse</strong>
-            <span>XXXXXXXXXXXXXXXX</span>
-          </li>
-          <li>
-            <strong>Téléphone</strong>
-            <a href="tel:+33400000000">04 00 00 00 00</a>
-          </li>
-          <li>
-            <strong>Email</strong>
-            <a href="mailto:contact@noiratelier.fr">theosinibaldi4@gmail.com</a>
-          </li>
-          <li>
-            <strong>Instagram</strong>
-            <a href="#">@XXXXXXXXXX</a>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="section booking">
+    <section class="section intro reveal">
       <div>
-        <h2>Un projet en tête ?</h2>
-        <p>Envoyez votre idée, l'emplacement souhaité, une taille approximative et quelques références visuelles pour préparer un premier échange.</p>
+        <p class="eyebrow">Offre Premium</p>
+        <h2>Un site vitrine plus travaille, pense pour inspirer confiance.</h2>
       </div>
-      <a class="button" href="mailto:contact@noiratelier.fr">Envoyer un message</a>
+      <p>Cette maquette reprend les elements d'une offre Premium : presentation claire, design moderne, animations discretes, formulaire de contact, images immersives et bases de referencement local pour Google.</p>
+    </section>
+
+    <section class="section highlights">
+      <article class="highlight reveal">
+        <strong>01</strong>
+        <h3>Formulaire de contact</h3>
+        <p>Les visiteurs peuvent demander une reservation, preciser la date, le nombre de couverts et laisser un message.</p>
+      </article>
+      <article class="highlight reveal">
+        <strong>02</strong>
+        <h3>Animations modernes</h3>
+        <p>Les sections apparaissent au scroll, les boutons reagissent au survol et les images gagnent en profondeur.</p>
+      </article>
+      <article class="highlight reveal">
+        <strong>03</strong>
+        <h3>SEO local de base</h3>
+        <p>Le titre, la description, les mots-cles, Open Graph et les donnees structurees aident a presenter le restaurant.</p>
+      </article>
+    </section>
+
+    <section class="section split alt reveal">
+      <div class="text-panel">
+        <p class="eyebrow">Apercu</p>
+        <h2>Une identite sobre, chaleureuse et credible.</h2>
+        <p>La palette melange vert sauge, bleu canal, argile et touches dorees pour eviter un rendu trop uniforme. Les espaces, les images et les contrastes donnent un aspect plus premium.</p>
+        <a class="text-link" href="restaurant.html">Decouvrir le restaurant</a>
+      </div>
+      <figure class="photo">
+        <img src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=1300&q=82" alt="Assiette de restaurant avec viande et garniture soignee">
+      </figure>
     </section>
   </main>
 
-  <footer>
-    Site vitrine fictif - Offre Essentielle : 1 page, présentation, horaires, coordonnées et responsive.
+  <footer class="footer">
+    <p>L'Atelier du Quai - Site fictif Premium</p>
+    <p>Restaurant factice a Briare - SEO local de base</p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
